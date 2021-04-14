@@ -2,7 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import './registerServiceWorker'
-import vuetify from './plugins/vuetify';
+
+const vuetify = process.env.NODE_ENV === "production"
+  ? require('./plugins/vuetify').default
+  : require('./plugins/vuetify-dev').default;
 
 Vue.config.productionTip = false
 
